@@ -82,6 +82,42 @@ async function seed() {
       attributes: { color: "Gray" }
     },
     {
+      name: "Dell Inspiron 14",
+      categoryId: categories['Laptop'],
+      vendorId: vendors['GadgetStore'],
+      brand: "DELL",
+      description: "Budget friendly laptop",
+      price: { amount: 699.99, currency: "USD", discount: 50 },
+      inventory: { quantity: 150, sku: "DELL-INSP-14" },
+      ratings: { average: 4.4, count: 800 },
+      images: ["assets/images/thumbs/product-two-img4.png"],
+      attributes: { color: "Silver" }
+    },
+    {
+      name: "Dell Alienware m16",
+      categoryId: categories['Laptop'],
+      vendorId: vendors['GadgetStore'],
+      brand: "DELL",
+      description: "High-end gaming laptop",
+      price: { amount: 2499.00, currency: "USD", discount: 0 },
+      inventory: { quantity: 30, sku: "DELL-ALW-M16" },
+      ratings: { average: 4.8, count: 450 },
+      images: ["assets/images/thumbs/product-two-img4.png"],
+      attributes: { color: "Dark Side of the Moon" }
+    },
+    {
+      name: "Dell UltraSharp 27 Monitor",
+      categoryId: categories['Electronics'],
+      vendorId: vendors['Tech Hub'],
+      brand: "DELL",
+      description: "4K USB-C Hub Monitor",
+      price: { amount: 599.99, currency: "USD", discount: 20 },
+      inventory: { quantity: 60, sku: "DELL-U2723QE" },
+      ratings: { average: 4.9, count: 620 },
+      images: ["assets/images/thumbs/product-two-img4.png"],
+      attributes: { color: "Black" }
+    },
+    {
       name: "HP Envy",
       categoryId: categories['Laptop'],
       vendorId: vendors['GadgetStore'],

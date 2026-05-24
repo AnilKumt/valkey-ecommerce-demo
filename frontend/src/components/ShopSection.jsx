@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import ReactSlider from 'react-slider'
+import AdBanner from './AdBanner'
 
 const ShopSection = () => {
 
@@ -10,6 +11,10 @@ const ShopSection = () => {
     let [products, setProducts] = useState([])
     let [loading, setLoading] = useState(true)
 
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const q = queryParams.get('q') || '';
+
     let sidebarController = () => {
         setActive(!active)
     }
@@ -17,9 +22,10 @@ const ShopSection = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/products');
+                const url = q ? `http://localhost:5000/api/search?q=${encodeURIComponent(q)}` : 'http://localhost:5000/api/products';
+                const response = await fetch(url);
                 const data = await response.json();
-                setProducts(data.products || []);
+                setProducts(data.products || data.results || []);
                 setLoading(false);
             } catch (err) {
                 console.error("Failed to fetch products:", err);
@@ -27,11 +33,7 @@ const ShopSection = () => {
             }
         };
         fetchProducts();
-    }, []);
-
-
-
-
+    }, [q]);
 
     return (
         <section className="shop py-80">
@@ -676,6 +678,7 @@ const ShopSection = () => {
                             </div>
                         </div>
                         {/* Top End */}
+                        <AdBanner context="general" value="all" />
                         
                         <div className={`list-grid-wrapper ${grid && "list-view"}`}>
                             {loading ? (

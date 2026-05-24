@@ -7,6 +7,9 @@ const authRoutes = require('./routes/auth');
 const productRoutes = require('./routes/products');
 const categoryRoutes = require('./routes/categories');
 const vendorRoutes = require('./routes/vendors');
+const searchRoutes = require('./routes/search');
+const adRoutes = require('./routes/ads');
+const agentRoutes = require('./routes/agent');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -20,6 +23,9 @@ app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/vendors', vendorRoutes);
+app.use('/api/search', searchRoutes);
+app.use('/api/ads', adRoutes);
+app.use('/api/agent', agentRoutes);
 
 // Health check endpoint
 app.get('/health', (req, res) => {
